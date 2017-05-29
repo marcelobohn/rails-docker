@@ -1,24 +1,26 @@
-# README
+# criar image
+docker build -t marcelobohn/rails-docker:0.0.1 .
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# mais listar a imagem criada
+docker images
 
-Things you may want to cover:
+# rodar e deixar terminal 'pendurado'
+docker run -it -p 3000:3000 marcelobohn/rails-docker:0.0.1
 
-* Ruby version
+# rodar e libera o console
+docker run -d -p 3000:3000 marcelobohn/rails-docker:0.0.1
+# para desligar roda os e pega o id o container
+docker ps
+# parar o container
+docker stop $id_rondando
 
-* System dependencies
 
-* Configuration
+pode ser necessário matar o processo manualmente
 
-* Database creation
+# lista processos
+netstat -vanp tcp | grep 3000
+# ou
+lsof -i tcp:3000
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#com o pid do processo
+kill $pid
